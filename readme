@@ -1,0 +1,101 @@
+# 概述
+对官方的volley进行了二次封装。
+
+# 改变
+在退出APP的时候需要取消所有的请求队列，在VolleyHelper写了cancel方法
+
+        public static void cancelRequest() {
+            try {
+                mRequestQueue.cancelAll(TAG);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("info", "tag ==" + TAG + "的请求取消失败");
+            }
+        }
+在 onStop 里调用。注意TAG，在创建Request时，就给它一个TAG。
+
+
+
+
+# 使用
+在Application里
+`VolleyHelper.initRequestQueue(this);`
+初始化请求队列。
+
+## 创建请求
+
+要注意的是
+
+    entity.setCacheTime(5 * 60 * 1000);
+    entity.setIgnoreCache(false);
+这是用来设置本地的缓存时间，和是否忽略缓存的。
+
+## 使用方式 String
+
+        VolleyHelper.addStringRequest(RequestEntity.GET, entity, new ResponseListener() {
+            @Override
+            public void onStart() {
+                mView.showLoading();
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object result) {
+                processResult((String)result);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                mView.hideLoading();
+                mView.setContent("请求出错！");
+            }
+        });
+        
+## 使用方式 Gson
+        
+        VolleyHelper.addGsonObjectRequest(RequestEntity.GET, entity, BaiDuBean.class, new ResponseListener() {
+            @Override
+            public void onStart() {
+                mView.showLoading();
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(Object result) {
+                processResult((BaiDuBean) result);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                mView.hideLoading();
+                mView.setContent("请求出错！");
+            }
+        });
+
+
+
+
+# 另外
+
+## 工程展示
+用的MVP框架。
+
+## 在项目中使用Gson的方法
+用gradle构建的工程，在build.gradle文件的依赖中添加
+`compile 'com.google.code.gson:gson:2.6.2'`
+2.6.2是gson的版本，或者换成最新的版本即可。
+
+## 用到的权限
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
