@@ -1,4 +1,6 @@
-package com.example.fanzf.repo_volleyhelper;
+package com.example.fanzf.repo_volleyhelper.base;
+
+import com.example.fanzf.repo_volleyhelper.main.RequestContract;
 
 /**
  * Created by fanzf on 2016/5/10.

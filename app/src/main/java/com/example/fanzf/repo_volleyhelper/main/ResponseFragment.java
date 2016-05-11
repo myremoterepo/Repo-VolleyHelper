@@ -1,4 +1,4 @@
-package com.example.fanzf.repo_volleyhelper;
+package com.example.fanzf.repo_volleyhelper.main;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fanzf.repo_volleyhelper.R;
 import com.example.fanzf.repo_volleyhelper.tool.NetworkUtil;
 
 /**

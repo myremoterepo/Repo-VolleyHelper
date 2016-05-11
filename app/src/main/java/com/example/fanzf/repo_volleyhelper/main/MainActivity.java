@@ -1,8 +1,9 @@
-package com.example.fanzf.repo_volleyhelper;
+package com.example.fanzf.repo_volleyhelper.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.fanzf.repo_volleyhelper.R;
 import com.example.fanzf.repo_volleyhelper.helper.VolleyHelper;
 
 public class MainActivity extends AppCompatActivity {
