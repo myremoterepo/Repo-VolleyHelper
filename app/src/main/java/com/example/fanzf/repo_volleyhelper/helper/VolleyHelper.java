@@ -24,16 +24,11 @@ public class VolleyHelper {
 
     /**
      * Volley请求对象初始化，建议放置在application子类或者app的第一个activity
-     *
      * @param context
      */
 
     public static void initRequestQueue(Context context) {
         mRequestQueue = Volley.newRequestQueue(context);
-    }
-
-    public static RequestQueue getInstance() {
-        return mRequestQueue;
     }
 
     /**
@@ -113,9 +108,6 @@ public class VolleyHelper {
         request.setIgnoreCache(requestEntity.isIgnoreCache());
         mRequestQueue.add(request);
     }
-
-
-
 
     /**
      * @desc 请求队列取消

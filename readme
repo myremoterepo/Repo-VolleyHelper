@@ -1,7 +1,24 @@
 # 概述
 对官方的volley进行了二次封装。
 
+# Volley的使用场景
+
+. 网络请求数量不大，请求频繁。
+. 文件下载不适合使用。
+
 # 改变
+
+主要介绍封装后使用上的改变。
+
+## 精简
+
+去掉了图片请求加载相关的类，像NetworkImageView，ImageRequest等。
+
+## 自定义GsonRequest,XMLRequest
+
+可以自定义不同的Request来达到各种的请求目的。
+
+## 取消队列
 在退出APP的时候需要取消所有的请求队列，在VolleyHelper写了cancel方法
 
         public static void cancelRequest() {
@@ -14,7 +31,11 @@
         }
 在 onStop 里调用。注意TAG，在创建Request时，就给它一个TAG。
 
+## 本地设置缓存时间
+在RequestEntity里提供了两个接口，设置缓存时间和是否忽略缓存的开关。
 
+    entity.setCacheTime(5 * 60 * 1000);
+    entity.setIgnoreCache(false);
 
 
 # 使用
@@ -22,13 +43,6 @@
 `VolleyHelper.initRequestQueue(this);`
 初始化请求队列。
 
-## 创建请求
-
-要注意的是
-
-    entity.setCacheTime(5 * 60 * 1000);
-    entity.setIgnoreCache(false);
-这是用来设置本地的缓存时间，和是否忽略缓存的。
 
 ## 使用方式 String
 
@@ -85,7 +99,7 @@
 
 # 另外
 
-## 工程展示
+## View的展示
 用的MVP框架。
 
 ## 在项目中使用Gson的方法

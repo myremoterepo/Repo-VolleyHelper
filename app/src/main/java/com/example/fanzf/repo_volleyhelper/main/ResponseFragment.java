@@ -23,6 +23,7 @@ public class ResponseFragment extends Fragment implements RequestContract.View {
     private TextView content;
     private Button stringReq;
     private Button gsonReq;
+    private Button netImgReq;
 
     private RequestContract.Presenter mPresenter;
     @Override
@@ -43,6 +44,7 @@ public class ResponseFragment extends Fragment implements RequestContract.View {
         content = (TextView) root.findViewById(R.id.content);
         stringReq = (Button)root.findViewById(R.id.stringRequest);
         gsonReq = (Button)root.findViewById(R.id.gsonRequest);
+        netImgReq = (Button)root.findViewById(R.id.netImgRequest);
         stringReq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

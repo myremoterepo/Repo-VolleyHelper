@@ -274,7 +274,6 @@ public abstract class Request<T> implements Comparable<Request<T>> {
             mEventLog.add(tag, threadId);
             mEventLog.finish(this.toString());
         }
-
         mErrorListener = null;
     }
 
